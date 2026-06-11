@@ -684,141 +684,143 @@
   const EXAMPLES = {
     claude: {
       designer: {
-        role: "a senior UX writer for a fintech product",
-        tone: "friendly and reassuring",
-        background: "We're designing the dashboard for a mobile budgeting app aimed at people new to managing money.",
-        instructions: "Write microcopy for three states: an empty dashboard (no accounts linked yet), a sync error, and a successful first budget. Keep each under 12 words and avoid finance jargon.",
-        request: "Write the three pieces of microcopy now.",
-        format: "a labeled list — one line per state, with the state name in bold"
+        role: "a visual designer at a healthcare company",
+        tone: "warm and creative",
+        background: "We're creating a set of illustrations for a patient-facing wellness app. They should feel calming, inclusive, and trustworthy — never clinical or cold.",
+        instructions: "Write an art-direction brief an illustrator (or image model) could follow. Cover visual style, color palette, do's and don'ts, and propose 5 specific illustration concepts for key screens.",
+        request: "Write the art-direction brief.",
+        format: "a brief with sections: Style, Color palette, Do's and Don'ts, and 5 Illustration concepts"
       },
       business: {
-        role: "a warm, plain-spoken marketing copywriter for a small neighborhood coffee shop",
-        tone: "warm and casual",
-        background: "We just launched online ordering for pickup and want to tell our regulars.",
-        instructions: "Write a short announcement email. Say online ordering is live and offer 10% off the first online order with code BREW10. Keep one clear call to action.",
-        request: "Draft the email.",
-        format: "a ~150-word email with a subject line and a single call-to-action"
+        role: "the owner of a small neighborhood bar",
+        tone: "lively and casual",
+        background: "We're launching a weekly Thursday trivia night with a happy-hour special and want to fill seats.",
+        instructions: "Write a short announcement email and one Instagram caption. Mention trivia every Thursday at 7pm and $5 happy-hour drinks until 8. Keep one clear call to action.",
+        request: "Write the email and the caption.",
+        format: "a ~120-word email with a subject line, followed by one short Instagram caption with a few hashtags"
       },
       comms: {
-        role: "a corporate communications lead",
-        tone: "clear and upbeat",
-        background: "Rough notes for a new hybrid work policy: in-office Monday–Wednesday, remote Thursday–Friday; starts the 1st of next month; new $50/month home-office stipend; team leads can grant exceptions.",
-        instructions: "Turn the notes into a company-wide announcement. Be positive and concrete, and don't invent details beyond the notes.",
-        request: "Write the announcement.",
-        format: "a headline plus three short sections: What's changing, When, and What you get"
+        role: "a communications director at an international humanitarian nonprofit",
+        tone: "warm, dignified, and credible",
+        background: "Field notes from our clean-water program this quarter: drilled 12 new wells in the eastern region; 8,000 people now have safe drinking water; one community cut waterborne illness by half; we have a $40,000 funding gap for the next phase.",
+        instructions: "Turn the field notes into a donor update. Center the communities and their agency, avoid savior framing, and don't exaggerate beyond the notes. End with a clear, specific ask.",
+        request: "Write the donor update.",
+        format: "a donor update with a headline, two short impact paragraphs, and a clear closing ask"
       },
-      engineer: {
-        role: "a senior backend engineer doing a code review",
-        tone: "direct and concise",
-        background: "Reviewing a small utility function from a teammate's pull request:\n\ndef average(nums):\n    return sum(nums) / len(nums)",
-        instructions: "Review the function for correctness bugs and edge cases only — no style nits. Consider empty input, non-numeric values, and very large lists.",
-        request: "List any bugs you find.",
+      pm: {
+        role: "a product manager at a consumer tech company",
+        tone: "clear and analytical",
+        background: "Raw user feedback from the last release:\n- \"The app is slow to load.\"\n- \"I can't find the export button.\"\n- \"Love the new dashboard!\"\n- \"Wish it synced with my calendar.\"\n- \"It crashed twice this week.\"\n- \"Onboarding was confusing.\"",
+        instructions: "Group similar feedback into themes, estimate the impact of each, and recommend what to tackle first and why. Don't invent feedback beyond what's listed.",
+        request: "Summarize the themes and give me a prioritized list.",
         think: true,
-        format: "a table with columns: issue, why it matters, severity",
-        prefill: "| Issue | Why it matters | Severity |"
+        format: "the top themes (with how many comments each), then a prioritized table: improvement, impact, effort",
+        prefill: "**Top themes:**"
       },
       admin: {
-        role: "an experienced executive assistant",
-        tone: "organized and practical",
-        background: "A new marketing coordinator starts Monday and I need a first-week onboarding plan.",
-        instructions: "Create a first-week onboarding checklist covering accounts and access, intro meetings, tools to set up, and one small starter task. Keep it skimmable.",
+        role: "an HR administrator",
+        tone: "organized and welcoming",
+        background: "A new employee starts Monday and I need a complete first-week onboarding plan.",
+        instructions: "Create a first-week onboarding checklist covering paperwork, benefits enrollment, IT access, required training, and intro meetings. Keep it skimmable and friendly for the new hire.",
         request: "Create the checklist.",
         format: "a checklist grouped by day (Mon–Fri), each item with a checkbox"
       }
     },
     gemini: {
       designer: {
-        persona: "a senior UX writer for a fintech product",
-        task: "Write empty-state, error, and success microcopy for a mobile budgeting app's dashboard",
-        audience: "first-time users who are new to managing money",
-        context: "Keep each line short and free of finance jargon; the app should feel friendly and reassuring.",
-        format: "a labeled list, one line per state",
-        tone: "friendly and reassuring",
-        length: "each line under 12 words"
+        persona: "a visual designer at a healthcare company",
+        task: "Write an art-direction brief for a set of calming, inclusive illustrations for a patient-facing wellness app",
+        audience: "an illustrator or image-generation model",
+        context: "The illustrations should feel warm and trustworthy, work for diverse patients, and never feel clinical or cold.",
+        format: "a brief with sections: Style, Color palette, Do's and Don'ts, and 5 illustration concepts",
+        tone: "warm and creative"
       },
       business: {
-        persona: "a warm, plain-spoken copywriter for a small neighborhood coffee shop",
-        task: "Draft a customer email announcing that online ordering for pickup is now live, with 10% off the first order using code BREW10",
-        audience: "existing local regulars",
-        context: "Friendly small business; we want one clear call to action.",
-        format: "an email with a subject line and a single call to action",
-        tone: "warm and casual",
-        length: "about 150 words"
+        persona: "the owner of a small neighborhood bar",
+        task: "Write an announcement email and an Instagram caption for our new weekly Thursday trivia night with a happy-hour special",
+        audience: "local regulars and nearby neighbors",
+        context: "Trivia every Thursday at 7pm; $5 happy-hour drinks until 8. Keep it lively with one clear call to action.",
+        format: "a short email with a subject line, plus one Instagram caption with a few hashtags",
+        tone: "lively and casual",
+        length: "email about 120 words; caption about 30 words"
       },
       comms: {
-        persona: "a corporate communications lead",
-        task: "Turn the notes below into an upbeat company-wide announcement about our new hybrid work policy",
-        audience: "all employees",
-        context: "Be positive and concrete; don't add any details beyond the notes.",
-        source: "In-office Monday–Wednesday, remote Thursday–Friday. Starts the 1st of next month. New $50/month home-office stipend. Team leads can grant exceptions.",
-        format: "a headline plus three short sections: What's changing, When, What you get",
-        tone: "clear and upbeat",
+        persona: "a communications director at an international humanitarian nonprofit",
+        task: "Turn the field notes below into a dignified donor update about our clean-water program",
+        audience: "individual donors",
+        context: "Center the communities and avoid savior framing; don't exaggerate beyond the notes; end with a clear ask.",
+        source: "Drilled 12 new wells in the eastern region this quarter. 8,000 people now have safe drinking water. One community cut waterborne illness by half. $40,000 funding gap for the next phase.",
+        format: "a headline, two short impact paragraphs, and a clear closing ask",
+        tone: "warm, dignified, and credible",
         length: "under 250 words"
       },
-      engineer: {
-        persona: "a senior backend engineer doing a code review",
-        task: "Review the function in the source for correctness bugs and edge cases — no style nits",
-        context: "Consider empty input, non-numeric values, and very large lists.",
-        source: "def average(nums):\n    return sum(nums) / len(nums)",
-        format: "a table: issue, why it matters, severity",
-        tone: "direct and concise"
+      pm: {
+        persona: "a product manager at a consumer tech company",
+        task: "Synthesize the user feedback below into the top themes and a prioritized list of improvements",
+        audience: "the engineering and design team",
+        context: "Group similar feedback, estimate impact, and recommend what to build first and why. Don't invent feedback beyond what's listed.",
+        source: "The app is slow to load. / I can't find the export button. / Love the new dashboard! / Wish it synced with my calendar. / It crashed twice this week. / Onboarding was confusing.",
+        format: "themes with comment counts, then a prioritized table: improvement, impact, effort",
+        tone: "clear and analytical"
       },
       admin: {
-        persona: "an experienced executive assistant",
-        task: "Create a first-week onboarding checklist for a new marketing coordinator",
-        context: "Cover accounts and access, intro meetings, tools to set up, and one small starter task. Keep it skimmable.",
+        persona: "an HR administrator",
+        task: "Create a first-week onboarding checklist for a new employee",
+        audience: "the new hire",
+        context: "Cover paperwork, benefits enrollment, IT access, required training, and intro meetings. Keep it skimmable and welcoming.",
         format: "a checklist grouped by day (Mon–Fri) with checkboxes",
-        tone: "organized and practical"
+        tone: "organized and welcoming"
       }
     },
     chatgpt: {
       designer: {
-        role: "a senior UX writer for a fintech product",
-        task: "Write empty-state, error, and success microcopy for a mobile budgeting app's dashboard",
-        audience: "first-time users new to managing money",
-        context: "Friendly, reassuring, and free of finance jargon.",
-        format: "a labeled list, one line per state",
-        length: "each line under 12 words",
-        tone: "friendly and reassuring"
+        role: "a visual designer at a healthcare company",
+        task: "Write an art-direction brief for a set of calming, inclusive illustrations for a patient-facing wellness app",
+        audience: "an illustrator or image-generation model",
+        context: "Warm and trustworthy, inclusive of diverse patients, never clinical or cold.",
+        format: "a brief with sections: Style, Color palette, Do's and Don'ts, and 5 illustration concepts",
+        tone: "warm and creative"
       },
       business: {
-        role: "a warm, plain-spoken copywriter for a small coffee shop",
-        task: "Draft a customer email announcing online ordering is live, with 10% off the first order using code BREW10",
-        audience: "existing local regulars",
-        context: "Keep one clear call to action.",
-        format: "an email with a subject line and one call to action",
-        length: "about 150 words",
-        tone: "warm and casual"
+        role: "the owner of a small neighborhood bar",
+        task: "Write an announcement email and an Instagram caption for our new weekly Thursday trivia night with a happy-hour special",
+        audience: "local regulars and nearby neighbors",
+        context: "Trivia every Thursday at 7pm; $5 happy-hour drinks until 8. Lively, one clear call to action.",
+        format: "a short email with a subject line, plus one Instagram caption with hashtags",
+        length: "email about 120 words; caption about 30 words",
+        tone: "lively and casual"
       },
       comms: {
-        role: "a corporate communications lead",
-        task: "Turn the reference notes into an upbeat company-wide announcement about our new hybrid work policy",
-        audience: "all employees",
-        context: "Stay positive and concrete; don't add anything beyond the notes.",
-        source: "In-office Monday–Wednesday, remote Thursday–Friday. Starts the 1st of next month. New $50/month home-office stipend. Team leads can grant exceptions.",
-        format: "a headline plus three short sections: What's changing, When, What you get",
+        role: "a communications director at an international humanitarian nonprofit",
+        task: "Turn the reference field notes into a dignified donor update about our clean-water program",
+        audience: "individual donors",
+        context: "Center the communities, avoid savior framing, don't exaggerate beyond the notes, and end with a clear ask.",
+        source: "Drilled 12 new wells in the eastern region this quarter. 8,000 people now have safe drinking water. One community cut waterborne illness by half. $40,000 funding gap for the next phase.",
+        format: "a headline, two short impact paragraphs, and a clear closing ask",
         length: "under 250 words",
-        tone: "clear and upbeat"
+        tone: "warm, dignified, and credible"
       },
-      engineer: {
-        role: "a senior backend engineer doing a code review",
-        task: "Review the function in the reference for correctness bugs and edge cases — no style nits",
-        context: "Consider empty input, non-numeric values, and very large lists.",
-        source: "def average(nums):\n    return sum(nums) / len(nums)",
-        steps: "1. Identify the failure cases. 2. Note the impact of each. 3. Suggest a fix.",
-        format: "a table: issue, why it matters, severity",
-        tone: "direct and concise"
+      pm: {
+        role: "a product manager at a consumer tech company",
+        task: "Synthesize the user feedback in the reference into the top themes and a prioritized list of improvements",
+        audience: "the engineering and design team",
+        context: "Group similar feedback, estimate impact, and recommend what to build first and why. Don't invent feedback beyond what's listed.",
+        source: "The app is slow to load. / I can't find the export button. / Love the new dashboard! / Wish it synced with my calendar. / It crashed twice this week. / Onboarding was confusing.",
+        steps: "1. Group the feedback into themes. 2. Estimate impact and effort for each. 3. Recommend a priority order.",
+        format: "themes with comment counts, then a prioritized table: improvement, impact, effort",
+        tone: "clear and analytical"
       },
       admin: {
-        role: "an experienced executive assistant",
-        task: "Create a first-week onboarding checklist for a new marketing coordinator",
-        context: "Cover accounts and access, intro meetings, tools to set up, and one small starter task. Keep it skimmable.",
+        role: "an HR administrator",
+        task: "Create a first-week onboarding checklist for a new employee",
+        audience: "the new hire",
+        context: "Cover paperwork, benefits enrollment, IT access, required training, and intro meetings. Keep it skimmable and welcoming.",
         format: "a checklist grouped by day (Mon–Fri) with checkboxes",
-        tone: "organized and practical"
+        tone: "organized and welcoming"
       }
     }
   };
-  const EX_ORDER = [["designer","Designer"],["business","Business owner"],["comms","Comms lead"],["engineer","Engineer"],["admin","Admin"]];
+  const EX_ORDER = [["designer","Designer"],["business","Bar owner"],["comms","Comms director"],["pm","Product manager"],["admin","HR admin"]];
   function applyPreset(panel, preset) {
     panel.querySelectorAll("[data-field]").forEach(e => { if (e.type === "checkbox") e.checked = false; else if (e.tagName === "SELECT") e.selectedIndex = 0; else e.value = ""; });
     const fr = panel.querySelector(".file-rows"); if (fr) { fr.innerHTML = ""; refreshEmptyNote(fr); }
